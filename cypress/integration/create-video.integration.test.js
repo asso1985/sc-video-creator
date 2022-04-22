@@ -1,4 +1,4 @@
-describe('Login', () => {
+describe('Create video', () => {
   beforeEach(() => {
     cy.viewport('macbook-15');
   });

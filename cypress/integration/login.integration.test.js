@@ -10,4 +10,11 @@ describe('Login', () => {
     cy.contains('Login').click();
     cy.location('pathname').should('eq', '/create-video');
   });
+
+  it('User should be able to logout', () => {
+    cy.visit('http://localhost:7000/', true);
+    cy.findByTestId('user-icon').click();
+    cy.contains('Sign out').click();
+    cy.location('pathname').should('eq', '/login');
+  });
 });

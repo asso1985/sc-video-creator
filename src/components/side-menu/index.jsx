@@ -22,7 +22,7 @@ const SideMenu = ({ ...rest }) => {
       </div>
       {isLogged && (
         <div className='side-menu-bottom'>
-          <NavLink to='/my-account'><ButtonIcon icon='user' size='lg'/></NavLink>
+          <NavLink to='/my-account'><ButtonIcon data-testid='user-icon' icon='user' size='lg'/></NavLink>
         </div>
       )}
     </aside>

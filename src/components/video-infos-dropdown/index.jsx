@@ -23,7 +23,7 @@ const VideoInfosDropdown = ({ newVideoInfos, onVideoTitleChange, onTagToggle, on
 
   return (
     <div className="video-infos-dropdown">
-      <input type="text" autoFocus={true} value={newVideoInfos.title} onChange={(e) => onVideoTitleChange(e.target.value)} />
+      <input type="text" placeholder="Choose a name" autoFocus={true} value={newVideoInfos.title} onChange={(e) => onVideoTitleChange(e.target.value)} />
       <div className="video-infos-dropdown-desc">
         <Text variant="gray">Fusce quis magna vel ex pellentesque consequat sed et turpis. Vivamus bibendum rutrum euismod. Sed non sagittis est, semper</Text>
       </div>

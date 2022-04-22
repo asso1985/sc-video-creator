@@ -1,0 +1,57 @@
+@import '@/colors.scss';
+
+.video-infos-dropdown-opener {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .scv-text {
+        margin-right: 10px;
+    }
+}
+
+.video-infos-dropdown {
+    position: absolute;
+    top: 40px;
+    z-index: 1;
+    max-width: 50%;
+
+    &::after {
+        content: '';
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        opacity: 0.95;
+        top: 0;
+        left: 0;
+        z-index: -1;        
+    }
+    
+    input {
+        display: block;
+        color: $blue;
+        border: 0;
+        font-size: 22px;
+        font-weight: bold;
+        font-weight: 400;
+        font-family: "Poppins";
+        outline: 0;
+        border-bottom: 1px solid $blue;
+        min-width: 320px;
+    }
+
+    .video-infos-dropdown-desc {
+        border-bottom: 1px solid $lightGray;
+        padding: 20px 0;
+    }
+
+    .video-infos-dropdown-tags {
+        display: flex;
+        padding: 20px 0;
+
+        .scv-tag {
+            margin-right: 10px;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@mixin backdrop {
+    
+    &::after {
+        content: '';
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        opacity: 0.9;
+        top: 0;
+        left: 0;
+        z-index: -1;        
+    }
+}

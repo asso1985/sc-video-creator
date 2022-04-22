@@ -1,0 +1,14 @@
+.layout-wrapper {
+    display: flex;
+    
+    &.not-logged {
+        background-image: url('../../assets/layout-bg.png');
+        background-repeat: no-repeat;
+        background-position: top right;        
+    }
+
+    .layout-main {
+        flex: 1;
+        margin: 0 30px;
+    }
+}

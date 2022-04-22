@@ -1,0 +1,39 @@
+@import '@/colors.scss';
+
+.scv-voice-preview {
+    display: flex;
+    height: 70px;
+    padding: 15px 18px;
+    background-color: $secondary;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 2px solid $secondary;
+
+    &.selected {
+        background:$tertiary;
+        border-color: $blue;
+
+        svg circle {
+            fill: $blue;
+        }
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .scv-voice-preview__media {
+        display: flex;
+        flex-direction: column;
+        padding-left: 18px;
+        position: relative;
+
+        .scv-text {
+            position: absolute;
+            top: -6px;
+        }
+    }
+}

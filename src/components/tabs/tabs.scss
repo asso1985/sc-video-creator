@@ -1,0 +1,16 @@
+.scv-tabs {
+    .scv-tabs-nav {
+        display: flex;
+        list-style: none;
+
+        li {
+            margin-right: 30px;
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+
+    .scv-tabs-content {
+        margin-top: 28px;
+    }
+}

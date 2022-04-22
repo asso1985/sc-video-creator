@@ -1,0 +1,21 @@
+@import '@/colors.scss';
+
+.scv-avatar-preview {
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+
+    img {
+        margin-bottom: 4px;
+        border-radius: 6px;
+        border: 1px solid $lightGray;
+    }
+
+    &.selected {
+        img {
+            border: 1px solid $blue;
+        }
+    }
+}

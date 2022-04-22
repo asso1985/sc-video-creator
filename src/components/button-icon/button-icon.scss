@@ -1,0 +1,33 @@
+@import '@/colors.scss';
+
+.scv-button-icon {
+    width: 60px;
+    height: 60px;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+
+    &.size-md {
+        svg {
+            width: 28px;
+            height: 28px;
+        }
+    }
+
+    &.size-lg {
+        svg {
+            width: 46px;
+            height: 46px;
+        }
+    }    
+
+    &:hover, .nav-active & {
+        background:$tertiary;
+
+        svg path {
+            fill: $blue
+        }
+    }
+}

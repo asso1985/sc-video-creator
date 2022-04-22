@@ -1,0 +1,39 @@
+@import '@/colors.scss';
+
+.scv-video-preview {
+    border-radius: 20px;
+    padding: 20px;
+    background-color: $lighterGray;
+
+    .scv-video-preview-image {
+        min-height: 360px;
+        border-radius: 20px;
+        background-color: $lightGray;
+        margin-bottom: 20px;
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+
+        button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+    }
+
+    .scv-video-preview-text {
+        background-color: white;
+        border-radius: 20px;
+        padding: 20px;
+        width: 100%;
+        textarea {
+            margin-bottom: 20px;
+            width: 100%;
+            resize: none;
+            outline: none;
+            border: none;
+        }
+    }
+}

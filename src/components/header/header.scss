@@ -1,0 +1,19 @@
+@import '@/colors.scss';
+
+.header {
+    margin: 40px 0 20px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 28px;
+    align-items: center;
+
+    &.has-border {
+      border-bottom: 1px solid $lightGray;
+    }
+
+    .header-actions {
+        button {
+            margin-left: 20px;
+        }
+    }
+}

@@ -1,0 +1,29 @@
+@import '@/colors.scss';
+
+.scv-text {
+    font-weight: 400;
+
+    &.size-sm {
+        font-size: 12px;
+    }
+
+    &.size-body {
+        font-size: 14px;
+    }
+
+    &.size-lg {
+        font-size: 22px;
+    }
+
+    &.variant-light {
+        color: white;
+    }
+
+    &.variant-gray {
+        color: $darkerGray;
+    }
+
+    &.variant-blue {
+        color: $blue;
+    }
+}

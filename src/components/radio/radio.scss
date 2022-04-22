@@ -1,0 +1,26 @@
+@import '@/colors.scss';
+
+.scv-radio {
+    display: flex;
+
+    label {
+        background-color: $secondary;
+        color: $darkGray;
+        width: 100%;
+        padding: 12px 0;
+        border-radius: 6px;
+        font-weight: bold;
+        border:  1px solid $secondary;
+        cursor: pointer;
+    }
+    input {
+        visibility: hidden;
+        width: 0;
+    }
+
+    input[type=radio]:checked + label {
+        background-color: $tertiary;
+        color: $blue;
+        border-color: $blue;
+    }
+}

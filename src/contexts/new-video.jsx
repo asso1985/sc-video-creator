@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState } from "react";
+import React, { useContext, createContext, useState, useEffect, useCallback } from "react";
 import PropTypes from 'prop-types';
 
 export const NewVideoContext = createContext();
@@ -56,7 +56,6 @@ const VOICES = [
 
 const fakeVideoApi = {
   save(newVideo, callback) {
-    console.log(newVideo);
     setTimeout(callback, 1500 ); // fake async
   }
 };
@@ -77,29 +76,35 @@ export const NewVideoProvider = ({ children }) => {
 
   const [newVideo, setNewVideo] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
+  const [savedVideos, setSavedVideos] = useState([]);
 
-  const selectActor = (actorId) => {
+  useEffect(() => {
+    const savedVideos = JSON.parse(localStorage.getItem('savedVideos')) || [];
+    setSavedVideos(savedVideos);
+  }, []);
+
+  const selectActor = useCallback((actorId) => {
     setNewVideo({
       ...newVideo,
       actor: ACTORS.find((actor) => actor.id === actorId).id
     });
-  };
+  }, [newVideo]);
 
-  const selectVoice = (voiceId) => {
+  const selectVoice = useCallback((voiceId) => {
     setNewVideo({
       ...newVideo,
       voice: VOICES.find((voice) => voice.id === voiceId).id
     });
-  };
+  }, [newVideo]);
 
-  const selectAlignment = (alignment) => {
+  const selectAlignment = useCallback((alignment) => {
     setNewVideo({
       ...newVideo,
       alignment
     });
-  };
+  }, [newVideo]);
 
-  const setVideoTitle = (title) => {
+  const setVideoTitle = useCallback((title) => {
     setNewVideo({
       ...newVideo,
       infos: {
@@ -107,9 +112,9 @@ export const NewVideoProvider = ({ children }) => {
         title
       }
     });
-  };
+  }, [newVideo]);
 
-  const updateTags = (tag) => {
+  const updateTags = useCallback((tag) => {
     setNewVideo({
       ...newVideo,
       infos: {
@@ -117,16 +122,27 @@ export const NewVideoProvider = ({ children }) => {
         tags: newVideo.infos.tags.includes(tag) ? newVideo.infos.tags.filter((item) => item !== tag) : [ ...newVideo.infos.tags, tag]
       }
     });
-  };
+  }, [newVideo]);
 
-  const saveVideo = (callback) => {
+  const saveVideo = useCallback((callback) => {
     setIsLoading(true);
     return fakeVideoApi.save(newVideo, () => {
+      const savedVideos = JSON.parse(localStorage.getItem('savedVideos')) || [];
+
+      const newVideoData = {
+        ...newVideo,
+        actor: ACTORS.find((actor) => actor.id === newVideo.actor),
+        voice: VOICES.find((voice) => voice.id === newVideo.voice)
+      };
+
+      setSavedVideos([...savedVideos, newVideoData]);
+
+      localStorage.setItem('savedVideos', JSON.stringify([...savedVideos, newVideoData]));
       setNewVideo(initialState);
       setIsLoading(false);
       callback && callback();
     });
-  };
+  }, [newVideo]);
 
   const isValid = valueExist(newVideo.actor) && valueExist(newVideo.voice) && valueExist(newVideo.alignment);
 
@@ -137,6 +153,7 @@ export const NewVideoProvider = ({ children }) => {
 
   const value = {
     selectedActor,
+    savedVideos,
     newVideo,
     isLoading,
     isValid,

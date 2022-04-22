@@ -26,3 +26,16 @@
 import '@testing-library/cypress/add-commands';
 
 
+// Overwrites
+Cypress.Commands.overwrite('visit', (originalFn, url, simulateLogged = false, options) => {
+
+  let optionsWithTokenInjection = {
+    ...options,
+    onBeforeLoad: function (window) {
+      if (simulateLogged) {
+        window.localStorage.setItem('user', JSON.stringify('john.doe@gmail.com'));
+      }
+    }
+  };
+  return originalFn(url, optionsWithTokenInjection);
+});

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Button from "../button";
 
 const VideoPreview = ({ actor }) => {
-  console.log(actor);
+
   return (
     <div className="scv-video-preview">
       <div className="scv-video-preview-image" style={{ backgroundImage: `url(${actor.avatar})` }}>

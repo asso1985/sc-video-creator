@@ -15,7 +15,7 @@ const MyAccount = ({}) => {
 
   return (
     <div>
-      <Header title="My account">
+      <Header title="My Account">
         <Button variant="danger" onClick={handleLogout}>Sign out</Button>
       </Header>
       <Tabs>

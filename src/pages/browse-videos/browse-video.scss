@@ -1,0 +1,28 @@
+@import '@/colors.scss';
+
+.scv-scroll-container {
+    overflow: auto;
+    height: calc(100vh - 121px);
+}
+
+.video-item {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: $lighterGray;
+    padding: 4px 4px 18px 4px;
+    border-radius: 6px;
+    text-align: center;
+
+    > .scv-text {
+        margin: 10px 0;
+    }
+
+    .video-item__tags {
+        display: flex;
+        justify-content: center;
+        > * {
+            margin: 0 5px;
+        }
+    }
+}

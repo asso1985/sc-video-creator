@@ -3,6 +3,10 @@
 .scv-text {
     font-weight: 400;
 
+    &.bold {
+        font-weight: 600;
+    }
+
     &.size-sm {
         font-size: 12px;
     }

@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start:build": "npx serve -l 7001 -n -s ./dist",
+    "start:build": "npx serve -l 7000 -n -s ./dist",
     "cypress:open": "cypress open"
   },
   "dependencies": {

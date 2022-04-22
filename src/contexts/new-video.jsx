@@ -7,32 +7,32 @@ const ACTORS = [
   {
     id: 0,
     name: "Anna",
-    avatar: "src/assets/actor_1.png"
+    avatar: "/actor_1.png"
   },
   {
     id: 2,
     name: "Yoyo",
-    avatar: "src/assets/actor_2.png"
+    avatar: "/actor_2.png"
   },
   {
     id: 3,
     name: "Other",
-    avatar: "src/assets/actor_3.png"
+    avatar: "/actor_3.png"
   },
   {
     id: 4,
     name: "Other",
-    avatar: "src/assets/actor_4.png"
+    avatar: "/actor_4.png"
   },
   {
     id: 5,
     name: "Other",
-    avatar: "src/assets/actor_5.png"
+    avatar: "/actor_5.png"
   },
   {
     id: 6,
     name: "Other",
-    avatar: "src/assets/actor_6.png"
+    avatar: "/actor_6.png"
   }
 ];
 

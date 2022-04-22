@@ -6,6 +6,11 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  publicDir: 'assets',
+  root: './',
+  build: {
+    outDir: 'dist'
+  },
   server: {
     port: 7000
   },
@@ -16,7 +21,7 @@ export default defineConfig({
   })],
   alias: {
     '@': path.resolve(__dirname, './src'),
-    'assets': path.resolve(__dirname, './src/assets'),
+    'assets': path.resolve(__dirname, './assets'),
     'components': path.resolve(__dirname, './src/components'),
     'pages': path.resolve(__dirname, './src/pages'),
     'contexts': path.resolve(__dirname, './src/contexts')

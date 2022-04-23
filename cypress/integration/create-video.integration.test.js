@@ -32,7 +32,7 @@ describe('Create video', () => {
     });
   };
 
-  context('mobile', () => {
+  context('Mobile', () => {
     beforeEach(() => {
       cy.viewport('iphone-se2');
     });
@@ -41,7 +41,7 @@ describe('Create video', () => {
     testAbortTitleUpdate();
   });
 
-  context('deksotp', () => {
+  context('Desktop', () => {
     beforeEach(() => {
       cy.viewport('macbook-15');
     });

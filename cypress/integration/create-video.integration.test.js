@@ -18,5 +18,17 @@ describe('Create video', () => {
     cy.contains('Save').click();
     cy.location('pathname').should('eq', '/browse');
   });
+
+  it('If user hits cancel while changing title it does not change title', () => {
+    cy.visit('http://localhost:7000/', true);
+    cy.location('pathname').should('eq', '/create-video');
+    cy.contains('Choose a name').click();
+    cy.findByPlaceholderText('Choose a name').focus().clear().type('Test');
+    cy.findByTestId('video-infos-dropdown').within(() => {
+      cy.contains('cancel').click();
+    });
+
+    cy.contains('Choose a name').should('exist');
+  });
 });
 

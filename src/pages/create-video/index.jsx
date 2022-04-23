@@ -1,3 +1,4 @@
+import './create-video.scss';
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'react-grid-system';
@@ -45,10 +46,10 @@ const CreateVideo = () => {
 
   return (
     <div>
-      <div>
+      <div className='scv-create-video-main'>
         <Header leftElement={<VideoInfosDropdown newVideoInfos={newVideo} onSave={handleOnBaseInfosSave} />} hasBorder>
           <ButtonGroup align='right'>
-            <Button disabled={isLoading}>Cancel</Button>
+            <Button>Cancel</Button>
             <Button variant="primary" disabled={!isValid || isLoading} onClick={handleSaveVideo}>Save</Button>
           </ButtonGroup>
         </Header>

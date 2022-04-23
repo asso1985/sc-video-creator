@@ -1,14 +1,21 @@
 .layout-wrapper {
     display: flex;
-    
-    &.not-logged {
-        background-image: url('../../assets/layout-bg.png');
-        background-repeat: no-repeat;
-        background-position: top right;        
-    }
+    flex-direction: column;
+    padding: 0 15px;
 
-    .layout-main {
-        flex: 1;
-        margin: 0 30px;
+    @media screen and (min-width: 768px){
+        flex-direction: row;
+        padding: 0;
+        
+        &.not-logged {
+            background-image: url('../../assets/layout-bg.png');
+            background-repeat: no-repeat;
+            background-position: top right;        
+        }
+    
+        .layout-main {
+            flex: 1;
+            margin: 0 30px;
+        }        
     }
 }

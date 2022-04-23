@@ -5,11 +5,13 @@ import './button-icon.scss';
 import { ReactComponent as Browse }  from 'assets/browse.svg';
 import { ReactComponent as Create } from 'assets/create.svg';
 import { ReactComponent as User } from 'assets/user.svg';
+import { ReactComponent as Edit } from 'assets/edit.svg';
 
 const icons = {
   'browse': Browse,
   'create': Create,
-  'user': User
+  'user': User,
+  'edit': Edit
 };
 
 const ButtonIcon = ({ icon, type, size, className, ...rest }) => {

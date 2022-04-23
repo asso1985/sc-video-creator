@@ -2,7 +2,7 @@ import './form.scss';
 import React from "react";
 import PropTypes from "prop-types";
 
-const Form = ({ onSubmit, children }) => {
+const Form = ({ centered, children, onSubmit }) => {
 
   const handleOnFormSubmit = (e) => {
     e.preventDefault();
@@ -10,13 +10,14 @@ const Form = ({ onSubmit, children }) => {
   };
 
   return (
-    <form onSubmit={handleOnFormSubmit}>
+    <form className={centered ? 'centered' : ''} onSubmit={handleOnFormSubmit}>
       {children}
     </form>
   );
 };
 
 Form.propTypes = {
+  centered: PropTypes.bool,
   children: PropTypes.node,
   onSubmit: PropTypes.func.isRequired
 };

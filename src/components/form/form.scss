@@ -1,11 +1,14 @@
 @import '@/colors.scss';
 
 form {
-    text-align: center;
-    @media screen and (min-width: 768px){
-        width: 360px;    
-    }
+    &.centered {
+        text-align: center;
+        min-width: 90vw;
 
+        @media screen and (min-width: 768px){
+            min-width: 360px;    
+        }        
+    }
     .form-field {
         display: flex;
         flex-direction: column;

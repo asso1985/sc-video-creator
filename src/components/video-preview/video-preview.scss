@@ -6,6 +6,20 @@
     background-color: $lighterGray;
     margin-bottom: 20px;
 
+    .scv-video-preview-top {
+        position: relative;
+
+        button {
+            margin-bottom: 20px;
+            @media screen and (min-width: 768px) {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%, 0);
+            }              
+        }           
+    }
+
     .scv-video-preview-image {
         border-radius: 20px;
         margin-bottom: 20px;
@@ -22,14 +36,7 @@
             // calculatin ratio 16:9 so that works on every screen
             padding-top: calc(591.44 / 1127.34 * 100%);
         }
-
-        button {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translate(-50%, 0);
-        }
-    }
+    } 
 
     .scv-video-preview-text {
         background-color: white;

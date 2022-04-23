@@ -26,21 +26,29 @@
   text-decoration: none;
   text-transform: capitalize;
 
-  &.primary {
+  &.full {
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+      width: auto;
+    }
+  }
+
+  &.variant-primary {
     @include buttonBgStates($success);
   }
 
-  &.secondary {
+  &.variant-secondary {
     color: $darkGray;
     @include buttonBgStates($secondary);
   }  
 
-  &.tertiary {
+  &.variant-tertiary {
     color: $blue;
     @include buttonBgStates($tertiary);
   }
 
-  &.danger {
+  &.variant-danger {
     color: $dangerText;
 
     &:hover {
@@ -52,7 +60,7 @@
     } 
   }
 
-  &.link {
+  &.variant-link {
     background: transparent;
     padding: 0;
     color: $blue;

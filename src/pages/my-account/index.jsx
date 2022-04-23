@@ -4,13 +4,14 @@ import { useAuth } from "contexts/auth";
 import Header from 'components/header';
 import Button from 'components/button';
 import Tabs from 'components/tabs';
+import Profile from 'components/profile';
 
 const MyAccount = ({}) => {
 
-  let auth = useAuth();
+  const { signOut } = useAuth();
 
   const handleLogout = () => {
-    auth.signOut();
+    signOut();
   };
 
   return (
@@ -19,7 +20,7 @@ const MyAccount = ({}) => {
         <Button variant="danger" onClick={handleLogout}>Sign out</Button>
       </Header>
       <Tabs>
-        <div label="Profile">profile content</div>
+        <div label="Profile"><Profile/></div>
         <div label="My Plan">plan content</div>
         <div label="Billing">billing content</div>
       </Tabs>

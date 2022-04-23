@@ -34,7 +34,7 @@ const SignUpPage = ({}) => {
       <Header title="Sign Up"></Header>
       <Centerer>
         <Loading isLoading={isLoading}>
-          <Form onSubmit={handleSubmit}>
+          <Form centered={true} onSubmit={handleSubmit}>
             <div className="form-field">
               <label>Full Name</label>
               <input name="fullname" placeholder="Full Name" type="text" value={fullname} onChange={(e) => setFullname(e.target.value)} />

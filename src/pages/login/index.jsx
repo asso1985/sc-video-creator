@@ -33,7 +33,7 @@ const LoginPage = () => {
       <Header title="Sign In"></Header>
       <Centerer>
         <Loading isLoading={isLoading}>
-          <Form onSubmit={handleSubmit}>
+          <Form centered={true} onSubmit={handleSubmit}>
             <div className="form-field">
               <label>Email address</label>
               <input name="email" type="email" placeholder="Email" disabled={isLoading} value={email} onChange={(e) => setEmail(e.target.value)} />

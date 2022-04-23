@@ -9,9 +9,9 @@ const VideoItem = ({ video }) => {
   return (
     <div className="video-item">
       <img src={video.actor.avatar} alt={video.actor.name} />
-      <Text size='lg'>{video.infos.title}</Text>
+      <Text size='md'>{video.title}</Text>
       <div className='video-item__tags'>
-        {video.infos.tags.map((tag, index) => (<Tag name={tag} key={index} />))}
+        {video.tags.map((tag, index) => (<Tag name={tag} key={index} />))}
       </div>
     </div>
   );

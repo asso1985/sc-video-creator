@@ -54,6 +54,33 @@ const VOICES = [
   }
 ];
 
+const BACKGROUNDS = [
+  {
+    id: 0,
+    avatar: '/bg_1.jpg'
+  },
+  {
+    id: 1,
+    avatar: '/bg_2.jpg'
+  },
+  {
+    id: 2,
+    avatar: '/bg_3.jpg'
+  },
+  {
+    id: 3,
+    avatar: '/bg_4.jpg'
+  },
+  {
+    id: 4,
+    avatar: '/bg_5.jpg'
+  },
+  {
+    id: 5,
+    avatar: '/bg_6.jpg'
+  }
+];
+
 const fakeVideoApi = {
   save(newVideo, callback) {
     setTimeout(callback, 1500 ); // fake async
@@ -66,12 +93,12 @@ export const VideosProvider = ({ children }) => {
 
   const initialState = {
     alignment: 'left',
-    voice: 0,
-    actor: 0,
-    infos: {
-      title: 'Choose a name',
-      tags: []
-    }
+    background: {},
+    script: '',
+    voice: {},
+    actor: ACTORS[0],
+    title: 'Choose a name',
+    tags: []
   };
 
   const [newVideo, setNewVideo] = useState(initialState);
@@ -83,44 +110,38 @@ export const VideosProvider = ({ children }) => {
     setSavedVideos(savedVideos);
   }, []);
 
+  const updateVideoInfos = useCallback((prop, value) => {
+    setNewVideo((prevState) => ({
+      ...prevState,
+      [prop]: value
+    }));
+  }, [newVideo]);
+
   const selectActor = useCallback((actorId) => {
     setNewVideo({
       ...newVideo,
-      actor: ACTORS.find((actor) => actor.id === actorId).id
+      actor: ACTORS.find((actor) => actor.id === actorId)
     });
   }, [newVideo]);
 
   const selectVoice = useCallback((voiceId) => {
     setNewVideo({
       ...newVideo,
-      voice: VOICES.find((voice) => voice.id === voiceId).id
+      voice: VOICES.find((voice) => voice.id === voiceId)
     });
   }, [newVideo]);
 
-  const selectAlignment = useCallback((alignment) => {
+  const selectBackground = useCallback((backgroundId) => {
     setNewVideo({
       ...newVideo,
-      alignment
-    });
-  }, [newVideo]);
-
-  const setVideoTitle = useCallback((title) => {
-    setNewVideo({
-      ...newVideo,
-      infos: {
-        ...newVideo.infos,
-        title
-      }
+      background: BACKGROUNDS.find((bg) => bg.id === backgroundId)
     });
   }, [newVideo]);
 
   const updateTags = useCallback((tag) => {
     setNewVideo({
       ...newVideo,
-      infos: {
-        ...newVideo.infos,
-        tags: newVideo.infos.tags.includes(tag) ? newVideo.infos.tags.filter((item) => item !== tag) : [ ...newVideo.infos.tags, tag]
-      }
+      tags: newVideo.tags.includes(tag) ? newVideo.tags.filter((item) => item !== tag) : [ ...newVideo.tags, tag]
     });
   }, [newVideo]);
 
@@ -129,15 +150,9 @@ export const VideosProvider = ({ children }) => {
     return fakeVideoApi.save(newVideo, () => {
       const savedVideos = JSON.parse(localStorage.getItem('savedVideos')) || [];
 
-      const newVideoData = {
-        ...newVideo,
-        actor: ACTORS.find((actor) => actor.id === newVideo.actor),
-        voice: VOICES.find((voice) => voice.id === newVideo.voice)
-      };
+      setSavedVideos([...savedVideos, newVideo]);
 
-      setSavedVideos([...savedVideos, newVideoData]);
-
-      localStorage.setItem('savedVideos', JSON.stringify([...savedVideos, newVideoData]));
+      localStorage.setItem('savedVideos', JSON.stringify([...savedVideos, newVideo]));
       setNewVideo(initialState);
       setIsLoading(false);
       callback && callback();
@@ -148,6 +163,7 @@ export const VideosProvider = ({ children }) => {
 
   const availableActors = ACTORS;
   const availableVoices = VOICES;
+  const availableBackgrounds = BACKGROUNDS;
 
   const selectedActor = availableActors.find((actor) => actor.id === newVideo.actor);
 
@@ -159,11 +175,12 @@ export const VideosProvider = ({ children }) => {
     isValid,
     availableActors,
     availableVoices,
+    availableBackgrounds,
     saveVideo,
-    selectAlignment,
     selectActor,
     selectVoice,
-    setVideoTitle,
+    selectBackground,
+    updateVideoInfos,
     updateTags
   };
 

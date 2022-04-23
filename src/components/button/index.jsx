@@ -1,9 +1,9 @@
+import './button.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
-import './button.scss';
 
 const Button = ({ as: Component, variant, children, type, ...rest }) => {
-  return <Component {...rest} type={type} className={`scv-button ${variant}`}>{children}</Component>;
+  return <Component {...rest} type={type} className={`scv-button ${variant}`} role="button">{children}</Component>;
 };
 
 Button.propTypes = {

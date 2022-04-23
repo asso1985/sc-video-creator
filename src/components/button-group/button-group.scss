@@ -1,0 +1,23 @@
+.scv-button-group {
+    display: flex;
+
+    &.align-left {
+        > button {
+            margin-right: 18px;
+        }
+
+        > button:last-of-type {
+            margin-right: 0;
+        }                
+    }
+
+    &.align-right {
+        > button {
+            margin-left: 18px;
+        }
+
+        > button:first-of-type {
+            margin-left: 0;
+        }        
+    }
+}

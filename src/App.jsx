@@ -8,12 +8,14 @@ import {
 import { AuthProvider } from 'contexts/auth';
 import { VideosProvider } from "contexts/videos";
 import Layout from 'components/layout';
-import PrivateRoute from './PrivateRoute';
+import LazyLoaded from './lazy-loaded';
+import PrivateRoute from './private-route';
 import LoginPage from 'pages/login';
-import CreateVideo from 'pages/create-video';
-import BrowseVideos from 'pages/browse-videos';
-import MyAccount from 'pages/my-account';
 import SignUpPage from 'pages/sign-up';
+
+const CreateVideo = React.lazy(() => import("./pages/create-video"));
+const BrowseVideos = React.lazy(() => import("./pages/browse-videos"));
+const MyAccount = React.lazy(() => import("./pages/my-account"));
 
 const composeProviders = (...providers) => ({ children }) => {
   return providers.reduceRight(
@@ -27,7 +29,6 @@ const Providers = composeProviders(
   VideosProvider
 );
 
-
 function App() {
   return (
     <Providers>
@@ -39,7 +40,9 @@ function App() {
               path="/create-video"
               element={
                 <PrivateRoute>
-                  <CreateVideo />
+                  <LazyLoaded>
+                    <CreateVideo />
+                  </LazyLoaded>
                 </PrivateRoute>
               }
             />
@@ -47,7 +50,9 @@ function App() {
               path="/browse"
               element={
                 <PrivateRoute>
-                  <BrowseVideos />
+                  <LazyLoaded>
+                    <BrowseVideos />
+                  </LazyLoaded>
                 </PrivateRoute>
               }
             />
@@ -55,7 +60,9 @@ function App() {
               path="/my-account"
               element={
                 <PrivateRoute>
-                  <MyAccount />
+                  <LazyLoaded>
+                    <MyAccount />
+                  </LazyLoaded>
                 </PrivateRoute>
               }
             />

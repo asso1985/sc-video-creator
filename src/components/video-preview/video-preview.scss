@@ -7,7 +7,6 @@
     margin-bottom: 20px;
 
     .scv-video-preview-image {
-        min-height: 360px;
         border-radius: 20px;
         margin-bottom: 20px;
         position: relative;
@@ -17,6 +16,11 @@
 
         &.outer {
             background-color: $lightGray;
+        }
+
+        .scv-video-preview-spacer {
+            // calculatin ratio 16:9 so that works on every screen
+            padding-top: calc(591.44 / 1127.34 * 100%);
         }
 
         button {

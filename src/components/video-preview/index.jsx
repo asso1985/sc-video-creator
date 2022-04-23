@@ -9,6 +9,7 @@ const VideoPreview = ({ video, onScriptChange }) => {
     <div className="scv-video-preview">
       <div className="scv-video-preview-image outer" style={{ backgroundImage: `url(${video.background?.avatar})` }}>
         <div className="scv-video-preview-image" style={{ backgroundImage: `url(${video.actor?.avatar})` }}>
+          <div className="scv-video-preview-spacer"></div>
           <Button variant="tertiary">Preview</Button>
         </div>
       </div>

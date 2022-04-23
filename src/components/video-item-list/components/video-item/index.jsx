@@ -7,10 +7,14 @@ import Text from 'components/text';
 const VideoItem = ({ video }) => {
 
   return (
-    <div className="video-item">
-      <img src={video.actor.avatar} alt={video.actor.name} />
+    <div className="scv-video-item">
+      <div>
+        <div className="scv-video-item-image" style={{ backgroundImage: `url(${video.actor?.avatar})` }}>
+          <div className='scv-video-item-spacer'></div>
+        </div>
+      </div>
       <Text size='md'>{video.title}</Text>
-      <div className='video-item__tags'>
+      <div className='scv-video-item__tags'>
         {video.tags.map((tag, index) => (<Tag name={tag} key={index} />))}
       </div>
     </div>

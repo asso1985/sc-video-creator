@@ -47,7 +47,7 @@ const SignUpPage = ({}) => {
               <label>Password</label>
               <input name="password" placeholder="Enter Password" type="password" value={pwd} onChange={(e) => setPwd(e.target.value)} />
             </div>
-            <Button role="button" type="submit" variant="primary">Sign Up</Button>
+            <Button type="submit" variant="primary">Sign Up</Button>
           </Form>
           <AuthFooter text='Already User?' link='/login' cta='Login'/>
         </Loading>

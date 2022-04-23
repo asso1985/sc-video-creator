@@ -10,7 +10,7 @@ describe('Sign Up', () => {
     cy.findByPlaceholderText('Full Name').type('John Doe');
     cy.findByPlaceholderText('Email').type('email@gmail.com');
     cy.findByPlaceholderText('Enter Password').type('password');
-    cy.findByRole('button').click();
+    cy.get('button[type=submit]').click();
     cy.location('pathname').should('eq', '/create-video');
   });
 });

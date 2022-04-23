@@ -6,7 +6,7 @@ import {
   Route
 } from "react-router-dom";
 import { AuthProvider } from 'contexts/auth';
-import { NewVideoProvider } from "contexts/new-video";
+import { VideosProvider } from "contexts/videos";
 import Layout from 'components/layout';
 import PrivateRoute from './PrivateRoute';
 import LoginPage from 'pages/login';
@@ -24,7 +24,7 @@ const composeProviders = (...providers) => ({ children }) => {
 
 const Providers = composeProviders(
   AuthProvider,
-  NewVideoProvider
+  VideosProvider
 );
 
 

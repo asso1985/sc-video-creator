@@ -46,7 +46,12 @@
         font-family: "Poppins";
         outline: 0;
         border-bottom: 1px solid $blue;
-        min-width: 320px;
+        min-width: auto;
+
+        
+        @media screen and (min-width: 768px){
+            min-width: 320px;
+        }        
     }
 
     .video-infos-dropdown-desc {

@@ -8,12 +8,15 @@
     .scv-video-preview-image {
         min-height: 360px;
         border-radius: 20px;
-        background-color: $lightGray;
         margin-bottom: 20px;
         position: relative;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
+
+        &.outer {
+            background-color: $lightGray;
+        }
 
         button {
             position: absolute;

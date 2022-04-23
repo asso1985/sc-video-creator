@@ -3,49 +3,61 @@ import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import Text from "../text";
 import Button from "../button";
+import ButtonGroup from "../button-group";
 import Tag from "../tag";
 import { ReactComponent as ArrowDown } from 'assets/arrow_down.svg';
 
-const VideoInfosDropdown = ({ newVideoInfos, onVideoTitleChange, onTagToggle, onSaveRequest }) => {
+const VideoInfosDropdown = ({ newVideoInfos, onSave }) => {
 
   const [isEditing, setIsEditing] = useState(false);
+  const [title, setTitle] = useState(newVideoInfos.title);
+  const [tags, setTags] = useState(newVideoInfos.tags);
 
   const handleOnSave = useCallback(() => {
     setIsEditing(false);
-    onSaveRequest && onSaveRequest();
-  }, []);
+    onSave && onSave([title, tags]);
+  }, [title, tags]);
+
+  const handleOnCancel = useCallback(() => {
+    setIsEditing(false);
+    setTitle(newVideoInfos.title);
+    setTags(newVideoInfos.tags);
+  }, [newVideoInfos, title, tags]);
+
+  const handleOnTagToggle = useCallback((tag) => {
+    setTags(tags.includes(tag) ? tags.filter((item) => item !== tag) : [ ...tags, tag]);
+  }, [tags]);
 
   if (!isEditing) {
     return <div className="video-infos-dropdown-opener" onClick={() => setIsEditing(true)}><Text as="h2" size="lg">{newVideoInfos?.title}</Text> <ArrowDown with={10} height={10} /></div>;
   }
 
-  const canSave = newVideoInfos.title?.length > 0;
+  const canSave = title?.length > 0;
 
   return (
     <div className="video-infos-dropdown">
-      <input type="text" placeholder="Choose a name" autoFocus={true} value={newVideoInfos.title} onChange={(e) => onVideoTitleChange(e.target.value)} />
+      <input type="text" placeholder="Choose a name" autoFocus={true} value={title} onChange={(e) => setTitle(e.target.value)} />
       <div className="video-infos-dropdown-desc">
         <Text variant="gray">Fusce quis magna vel ex pellentesque consequat sed et turpis. Vivamus bibendum rutrum euismod. Sed non sagittis est, semper</Text>
       </div>
       <div className="video-infos-dropdown-tags">
-        <Tag name='email' active={newVideoInfos?.tags?.includes('email')} onClick={() => onTagToggle('email')} />
-        <Tag name='marketing' active={newVideoInfos?.tags?.includes('marketing')} onClick={() => onTagToggle('marketing')} />
-        <Tag name='greeting' active={newVideoInfos?.tags?.includes('greeting')} onClick={() => onTagToggle('greeting')} />
-        <Tag name='other' active={newVideoInfos?.tags?.includes('other')} onClick={() => onTagToggle('other')} />
+        <Tag name='email' active={tags?.includes('email')} onClick={() => handleOnTagToggle('email')} />
+        <Tag name='marketing' active={tags?.includes('marketing')} onClick={() => handleOnTagToggle('marketing')} />
+        <Tag name='greeting' active={tags?.includes('greeting')} onClick={() => handleOnTagToggle('greeting')} />
+        <Tag name='other' active={tags?.includes('other')} onClick={() => handleOnTagToggle('other')} />
       </div>
-      <Button variant="primary" disabled={!canSave} onClick={handleOnSave}>Save</Button>
+      <ButtonGroup>
+        <Button variant="secondary" onClick={handleOnCancel}>cancel</Button>
+        <Button variant="primary" disabled={!canSave} onClick={handleOnSave}>Save</Button>
+      </ButtonGroup>
+
     </div>
   );
 };
 
 VideoInfosDropdown.propTypes = {
-  newVideoInfos: PropTypes.shape({
-    title: PropTypes.string,
-    tags: PropTypes.arrayOf(PropTypes.string)
-  }).isRequired,
-  onVideoTitleChange: PropTypes.func.isRequired,
-  onTagToggle: PropTypes.func.isRequired,
-  onSaveRequest: PropTypes.func.isRequired
+  newVideoInfos: PropTypes.object.isRequired,
+  onSave: PropTypes.func.isRequired
 };
 
 export default VideoInfosDropdown;

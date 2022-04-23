@@ -1,6 +1,6 @@
 @import '@/colors.scss';
 
-.scv-avatar-preview {
+.scv-image-preview {
     text-align: center;
     cursor: pointer;
     display: flex;
@@ -15,7 +15,7 @@
 
     &.selected {
         img {
-            border: 1px solid $blue;
+            border: 2px solid $blue;
         }
     }
 }

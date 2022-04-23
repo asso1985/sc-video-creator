@@ -1,0 +1,37 @@
+@import '@/colors.scss';
+
+.scv-accordion-item {
+    margin: 0 -15px;
+    padding: 0 15px;
+    
+    
+    header {
+        padding: 16px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .scv-accordion-item__content {
+        padding: 0 0 15px 0;
+        min-height: 200px;
+    }
+
+    &.open {
+        background-color: $tertiary;
+        border: none;
+        border-radius: 6px;
+
+        header svg {
+            transform: rotate(180deg);
+            path {
+                fill: $blue;
+            }
+        }
+    }
+
+    &.border {
+        border-bottom: 1px solid $lightGray;
+    }
+}

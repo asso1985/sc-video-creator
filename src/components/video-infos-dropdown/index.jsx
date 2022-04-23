@@ -35,7 +35,7 @@ const VideoInfosDropdown = ({ newVideoInfos, onSave }) => {
   const canSave = title?.length > 0;
 
   return (
-    <div className="video-infos-dropdown">
+    <div className="video-infos-dropdown" data-testid='video-infos-dropdown'>
       <input type="text" placeholder="Choose a name" autoFocus={true} value={title} onChange={(e) => setTitle(e.target.value)} />
       <div className="video-infos-dropdown-desc">
         <Text variant="gray">Fusce quis magna vel ex pellentesque consequat sed et turpis. Vivamus bibendum rutrum euismod. Sed non sagittis est, semper</Text>

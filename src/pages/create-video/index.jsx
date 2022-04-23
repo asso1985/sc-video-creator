@@ -10,7 +10,7 @@ import AlignmentSelector from 'components/alignment-selector';
 import VideoInfosDropdown from 'components/video-infos-dropdown';
 import Loading from 'components/loading';
 import VideoPreview from 'components/video-preview';
-import { useCreateVideo } from "contexts/new-video";
+import { useVideos } from "contexts/videos";
 
 const CreateVideo = () => {
 
@@ -26,7 +26,7 @@ const CreateVideo = () => {
     selectActor,
     selectVoice,
     setVideoTitle,
-    updateTags } = useCreateVideo();
+    updateTags } = useVideos();
   const navigate = useNavigate();
 
   const handleSaveVideo = () => {

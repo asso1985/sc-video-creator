@@ -1,7 +1,7 @@
 import React, { useContext, createContext, useState, useEffect, useCallback } from "react";
 import PropTypes from 'prop-types';
 
-export const NewVideoContext = createContext();
+export const VideosContext = createContext();
 
 const ACTORS = [
   {
@@ -62,7 +62,7 @@ const fakeVideoApi = {
 
 const valueExist = (value) => value !== undefined;
 
-export const NewVideoProvider = ({ children }) => {
+export const VideosProvider = ({ children }) => {
 
   const initialState = {
     alignment: 'left',
@@ -167,13 +167,13 @@ export const NewVideoProvider = ({ children }) => {
     updateTags
   };
 
-  return <NewVideoContext.Provider value={value}>{children}</NewVideoContext.Provider>;
+  return <VideosContext.Provider value={value}>{children}</VideosContext.Provider>;
 };
 
-NewVideoProvider.propTypes = {
+VideosProvider.propTypes = {
   children: PropTypes.node
 };
 
-export const useCreateVideo = () => {
-  return useContext(NewVideoContext);
+export const useVideos = () => {
+  return useContext(VideosContext);
 };

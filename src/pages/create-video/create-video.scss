@@ -1,0 +1,25 @@
+.scv-create-video-main {
+    display: flex;
+    flex-direction: column;
+    
+    @media screen and (max-width: 768px) {
+        padding-bottom: 115px;
+
+        .header {
+            flex-direction: column;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            background: white;
+            width: 100%;
+            margin: 0;
+            padding: 16px;
+            border-top: 1px solid #ccc;
+            
+            .header-title {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

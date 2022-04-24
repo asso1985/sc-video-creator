@@ -13,6 +13,9 @@ describe('Create video', () => {
       cy.contains('British').click();
       cy.contains('Alignment').click();
       cy.contains('center').click();
+      cy.findByPlaceholderText('Type or paste your videoscript here. You can also request a translation of an English script to any of 27 other languages').type('This is a test');
+      cy.contains('14 chars');
+
       cy.contains('Save').click();
       cy.location('pathname').should('eq', '/browse');
     });

@@ -1,0 +1,19 @@
+.scv-video-thumb-image {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    &.radius-sm {
+        border-radius: 6px;
+    }
+
+    &.radius-lg {
+        border-radius: 20px;
+    }    
+
+    .scv-video-thumb-spacer {
+        // calculatin ratio 16:9 so that works on every screen
+        padding-top: calc(591.44 / 1127.34 * 100%);
+    }
+}

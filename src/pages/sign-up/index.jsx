@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from "contexts/auth";
+import useTouched from "hooks/touched";
+import useValidation from "hooks/validation";
 
 import Header from 'components/header';
 import AuthFooter from 'components/auth-footer';
@@ -8,6 +10,8 @@ import Button from 'components/button';
 import Form from 'components/form';
 import Loading from 'components/loading';
 import Centerer from 'components/centerer';
+import FormField from 'components/form-field';
+import { isMinLength, isValidEmail, isValidPassword } from 'utils/validation';
 
 const SignUpPage = ({}) => {
 
@@ -29,25 +33,33 @@ const SignUpPage = ({}) => {
     });
   }, [email]);
 
+
+  const rules = {
+    fullname: isMinLength(fullname),
+    email: isValidEmail(email),
+    password: isValidPassword(pwd)
+  };
+
+  const [ touched, setTouched ] = useTouched();
+  const { isValid, hasError } = useValidation(rules, touched);
+
+
   return (
     <div>
       <Header title="Sign Up"></Header>
       <Centerer>
         <Loading isLoading={isLoading}>
           <Form centered={true} onSubmit={handleSubmit}>
-            <div className="form-field">
-              <label>Full Name</label>
-              <input name="fullname" placeholder="Full Name" type="text" value={fullname} onChange={(e) => setFullname(e.target.value)} />
-            </div>
-            <div className="form-field">
-              <label>Email address</label>
-              <input name="email" placeholder="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </div>
-            <div className="form-field">
-              <label>Password</label>
-              <input name="password" placeholder="Enter Password" type="password" value={pwd} onChange={(e) => setPwd(e.target.value)} />
-            </div>
-            <Button type="submit" variant="primary">Sign Up</Button>
+            <FormField label="Full Name" error={hasError('fullname')}>
+              <input name="fullname" placeholder="Full Name" type="text" value={fullname} onChange={(e) => setFullname(e.target.value)} onBlur={setTouched} />
+            </FormField>
+            <FormField label="Email address" error={hasError('email')}>
+              <input name="email" placeholder="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} onBlur={setTouched} />
+            </FormField>
+            <FormField label="Password" error={hasError('password')}>
+              <input name="password" placeholder="Enter Password" type="password" value={pwd} onChange={(e) => setPwd(e.target.value)} onBlur={setTouched} />
+            </FormField>
+            <Button type="submit" variant="primary" disabled={isLoading || !isValid}>Sign Up</Button>
           </Form>
           <AuthFooter text='Already User?' link='/login' cta='Login'/>
         </Loading>

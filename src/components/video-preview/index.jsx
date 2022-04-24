@@ -2,6 +2,7 @@ import './video-preview.scss';
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "../button";
+import Text from "../text";
 import VideoRatioThumb from "../video-ratio-thumb";
 
 const VideoPreview = ({ video, onScriptChange }) => {
@@ -21,7 +22,11 @@ const VideoPreview = ({ video, onScriptChange }) => {
           value={video.script}
           onChange={(e) => onScriptChange(e.target.value)}
         />
-        <Button variant="secondary">Listen</Button>
+        <footer>
+          <Button variant="secondary">Listen</Button>
+          <Text size='sm' variant='gray'>{video.script.length} chars</Text>
+        </footer>
+
       </div>
     </div>
   );

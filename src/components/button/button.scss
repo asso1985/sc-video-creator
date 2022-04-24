@@ -1,4 +1,5 @@
-@import '@/colors.scss';
+@import 'styles/colors.scss';
+@import 'styles/mixins.scss';
 
 @mixin buttonBgStates($color) {
 
@@ -27,14 +28,14 @@
   text-transform: capitalize;
 
   
-  @media screen and (min-width: 768px) {
+  @include for-tablet-portrait-up {
     padding: 6px 20px;
   }  
 
   &.full {
     width: 100%;
 
-    @media screen and (min-width: 768px) {
+    @include for-tablet-portrait-up {
       width: auto;
     }
   }

@@ -1,4 +1,5 @@
-@import '@/colors.scss';
+@import 'styles/colors.scss';
+@import 'styles/mixins.scss';
 
 .header {
     margin: 20px 0 20px;
@@ -12,7 +13,7 @@
       border-bottom: none;
     }
 
-    @media screen and (min-width: 768px) {
+    @include for-tablet-portrait-up {
       margin-top: 40px;
     }
 }

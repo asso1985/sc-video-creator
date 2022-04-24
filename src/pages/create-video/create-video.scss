@@ -1,8 +1,10 @@
+@import 'styles/mixins.scss';
+
 .scv-create-video-main {
     display: flex;
     flex-direction: column;
     
-    @media screen and (max-width: 768px) {
+    @include for-phone-only {
         padding-bottom: 115px;
 
         .header {

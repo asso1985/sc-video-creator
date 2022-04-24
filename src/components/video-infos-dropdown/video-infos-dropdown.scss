@@ -17,6 +17,7 @@
     z-index: 1;
     left: 0;
     padding: 15px;
+    max-width: 100%;
 
     @include for-tablet-portrait-up {
         padding: 0;
@@ -47,10 +48,11 @@
         font-family: "Poppins";
         outline: 0;
         border-bottom: 1px solid $blue;
-        min-width: 100%;
+        width: 100%;
         
         @include for-tablet-portrait-up {
             min-width: 320px;
+            width: auto;
         }        
     }
 

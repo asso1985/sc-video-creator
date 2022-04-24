@@ -34,11 +34,11 @@
 
   &.full {
     width: 100%;
-
-    @include for-tablet-portrait-up {
-      width: auto;
-    }
   }
+
+  @include for-phone-only {
+    width: 100%;
+  }  
 
   &.variant-primary {
     @include buttonBgStates($success);

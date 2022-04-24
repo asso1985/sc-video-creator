@@ -24,7 +24,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  full: true,
+  full: false,
   as: 'button',
   role: 'button',
   variant: 'secondary',

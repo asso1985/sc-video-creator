@@ -5,6 +5,7 @@ import Header from 'components/header';
 import Button from 'components/button';
 import Tabs from 'components/tabs';
 import Profile from 'components/profile';
+import Plans from 'components/plans';
 
 const MyAccount = ({}) => {
 
@@ -21,7 +22,7 @@ const MyAccount = ({}) => {
       </Header>
       <Tabs>
         <div label="Profile"><Profile/></div>
-        <div label="My Plan">plan content</div>
+        <div label="My Plan"><Plans/></div>
         <div label="Billing">billing content</div>
       </Tabs>
     </div>

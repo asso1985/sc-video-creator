@@ -27,7 +27,7 @@ ButtonIcon.propTypes = {
   icon: PropTypes.node,
   className: PropTypes.string,
   variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'danger']),
-  size: PropTypes.oneOf(['md', 'lg']),
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
   type: PropTypes.oneOf(['button', 'submit']),
   children: PropTypes.node
 };

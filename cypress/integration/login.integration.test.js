@@ -11,6 +11,16 @@ describe('Login', () => {
     });
   };
 
+  const testDisabledLogin = () => {
+
+    it('Login button should be disabled', () => {
+      cy.visit('http://localhost:7000/');
+      cy.findByPlaceholderText('Email').type('not_valid_email@gmail.').blur();
+      cy.findByPlaceholderText('Enter Password').focus().blur();
+      cy.contains('Login').should('be.disabled');
+    });
+  };
+
   const testLogout = () => {
     it('User should be able to logout', () => {
       cy.visit('http://localhost:7000/', true);
@@ -27,6 +37,7 @@ describe('Login', () => {
 
     testLogin();
     testLogout();
+    testDisabledLogin();
   });
 
   context('Desktop', () => {
@@ -36,5 +47,6 @@ describe('Login', () => {
 
     testLogin();
     testLogout();
+    testDisabledLogin();
   });
 });

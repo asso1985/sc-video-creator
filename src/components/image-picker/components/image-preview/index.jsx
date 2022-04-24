@@ -3,6 +3,7 @@ import React, { useCallback } from "react";
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Text from "components/text";
+import VideoRatioThumb from "components/video-ratio-thumb";
 
 const ImagePreview = ({ image, isSelected, onImageSelect }) => {
   const { avatar, name, id } = image;
@@ -17,7 +18,9 @@ const ImagePreview = ({ image, isSelected, onImageSelect }) => {
 
   return (
     <div className={cs} onClick={handleOnImageSelect}>
-      <img src={avatar} alt={name} />
+      <div className='scv-image-preview-image'>
+        <VideoRatioThumb image={avatar} radius='sm' />
+      </div>
       <Text size='sm' variant={isSelected ? 'blue' : 'gray'}>{name}</Text>
     </div>
   );

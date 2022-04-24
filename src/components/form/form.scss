@@ -9,21 +9,5 @@ form {
         @media screen and (min-width: 768px){
             min-width: 360px;    
         }        
-    }
-    .form-field {
-        display: flex;
-        flex-direction: column;
-        margin-bottom:  20px;
-        text-align: left;
-
-        label {
-            margin-bottom: 6px;
-        }
-
-        input {
-            padding: 9px 15px 8px 15px;
-            border-radius: 6px;
-            border: 1px solid $darkGray;
-        }
-    }        
+    }      
 }

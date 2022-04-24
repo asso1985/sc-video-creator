@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'react-grid-system';
 import Form from 'components/form';
 import Button from 'components/button';
 import ButtonIcon from 'components/button-icon';
+import FormField from 'components/form-field';
 import { ReactComponent as User } from 'assets/user.svg';
 
 const Profile = () => {
@@ -20,24 +21,21 @@ const Profile = () => {
         </Row>
         <Row>
           <Col xs={12} md={3}>
-            <div className="form-field">
-              <label>First Name</label>
+            <FormField label="First Name">
               <input name="first_name" type="text" placeholder="First Name"/>
-            </div>
+            </FormField>
           </Col>
           <Col xs={12} md={3}>
-            <div className="form-field">
-              <label>Last Name</label>
+            <FormField label="Last Name">
               <input name="last_name" type="text" placeholder="Last Name"/>
-            </div>
+            </FormField>
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={3}>
-            <div className="form-field">
-              <label>Email</label>
+            <FormField label="Email">
               <input name="email" type="email" placeholder="Email" />
-            </div>
+            </FormField>
           </Col>
         </Row>
         <Row>

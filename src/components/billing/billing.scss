@@ -1,0 +1,26 @@
+.scv-billing {
+    overflow: auto;
+    max-width: 100%;
+
+    table {
+        width: 100%;
+        margin: 0 -10px;
+        thead {
+            text-transform: uppercase;
+        }
+        td {
+            padding: 15px 10px;
+
+            button {
+                border: none;
+                background-color: transparent;
+                cursor: pointer;
+            }
+
+            .scv-td-inner {
+                display: flex;
+                align-items: center;                
+            }
+        }
+    }
+}

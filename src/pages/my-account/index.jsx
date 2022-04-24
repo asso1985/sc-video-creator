@@ -6,6 +6,7 @@ import Button from 'components/button';
 import Tabs from 'components/tabs';
 import Profile from 'components/profile';
 import Plans from 'components/plans';
+import Billing from 'components/billing';
 
 const MyAccount = ({}) => {
 
@@ -21,9 +22,9 @@ const MyAccount = ({}) => {
         <Button variant="danger" onClick={handleLogout}>Sign out</Button>
       </Header>
       <Tabs>
-        <div label="Profile"><Profile/></div>
-        <div label="My Plan"><Plans/></div>
-        <div label="Billing">billing content</div>
+        <div label="Profile"><Profile /></div>
+        <div label="My Plan"><Plans /></div>
+        <div label="Billing"><Billing /></div>
       </Tabs>
     </div>
   );

@@ -70,7 +70,7 @@ const Plans = () => {
           {PLANS.map((plan, i) => {
             const cta = i > currentPlanIndex ? 'Updgrade' : 'Downgrade';
             return (
-              <Col key={i}><Plan plan={{ ...plan, cta }} active={plan.id === currentPlanId} onSelectPlan={() => setCurrentPlanId(plan.id)} /></Col>
+              <Col key={i} xs={12} md={6} lg={3}><Plan plan={{ ...plan, cta }} active={plan.id === currentPlanId} onSelectPlan={() => setCurrentPlanId(plan.id)} /></Col>
             );
           })}
         </Row>

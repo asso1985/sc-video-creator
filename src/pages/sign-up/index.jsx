@@ -61,7 +61,7 @@ const SignUpPage = ({}) => {
             <FormField label="Password" error={errorMessage('password', 'Password is required')}>
               <input name="password" placeholder="Enter Password" autoComplete="new-password" type="password" value={pwd} onChange={(e) => setPwd(e.target.value)} onBlur={setTouched} />
             </FormField>
-            <Button type="submit" variant="primary" disabled={isLoading || !isValid}>Sign Up</Button>
+            <Button type="submit" variant="primary" disabled={isLoading}>Sign Up</Button>
           </Form>
           <AuthFooter text='Already User?' link='/login' cta='Login'/>
         </Loading>

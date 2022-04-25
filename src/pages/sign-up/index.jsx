@@ -34,8 +34,7 @@ const SignUpPage = ({}) => {
   const [ touched, setTouched ] = useTouched();
   const { isValid, errorMessage } = useValidation(rules, touched);
 
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(() => {
 
     if (!isValid) {
       return;
@@ -44,7 +43,7 @@ const SignUpPage = ({}) => {
     signUp({ email, fullname, pwd }, () => {
       navigate(from, { replace: true });
     });
-  }, [email]);
+  }, [isValid, email]);
 
   return (
     <div>

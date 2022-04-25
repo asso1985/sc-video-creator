@@ -5,9 +5,9 @@ describe('Sign Up', () => {
       cy.visit('http://localhost:7000/');
       cy.findByText('Sign Up').click();
       cy.location('pathname').should('eq', '/sign-up');
-      cy.findByPlaceholderText('Full Name').type('John Doe');
-      cy.findByPlaceholderText('Email').type('email@gmail.com');
-      cy.findByPlaceholderText('Enter Password').type('password');
+      cy.findByPlaceholderText('Full Name').type('John Doe').blur();
+      cy.findByPlaceholderText('Email').type('email@gmail.com').blur();
+      cy.findByPlaceholderText('Enter Password').type('password').blur();
       cy.get('button[type=submit]').click();
       cy.location('pathname').should('eq', '/create-video');
     });

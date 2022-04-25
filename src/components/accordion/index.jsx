@@ -36,7 +36,7 @@ const Accordion = ({ children: accordions, initialOpen }) => {
 
   const handleOnToggle = useCallback((title) => {
     setActiveAccordion(title);
-  }, [activeAccordion]);
+  }, []);
 
   return (
     <div className="scv-accordion">

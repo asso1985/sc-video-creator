@@ -16,13 +16,13 @@ const VideoInfosDropdown = ({ newVideoInfos, onSave }) => {
   const handleOnSave = useCallback(() => {
     setIsEditing(false);
     onSave && onSave([title, tags]);
-  }, [title, tags]);
+  }, [title, tags, onSave]);
 
   const handleOnCancel = useCallback(() => {
     setIsEditing(false);
     setTitle(newVideoInfos.title);
     setTags(newVideoInfos.tags);
-  }, [newVideoInfos, title, tags]);
+  }, [newVideoInfos]);
 
   const handleOnTagToggle = useCallback((tag) => {
     setTags(tags.includes(tag) ? tags.filter((item) => item !== tag) : [ ...tags, tag]);

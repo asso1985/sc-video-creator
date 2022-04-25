@@ -16,8 +16,9 @@ describe('Login', () => {
     it('Login button should be disabled', () => {
       cy.visit('http://localhost:7000/');
       cy.findByPlaceholderText('Email').type('not_valid_email@gmail.').blur();
+      cy.contains('Email address is required');
       cy.findByPlaceholderText('Enter Password').focus().blur();
-      cy.contains('Login').should('be.disabled');
+      cy.contains('Password is required');
     });
   };
 

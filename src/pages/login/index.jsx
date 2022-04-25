@@ -50,7 +50,7 @@ const LoginPage = () => {
       <Centerer>
         <Loading isLoading={isLoading}>
           <Form centered={true} onSubmit={handleSubmit}>
-            <FormField label="Email address" error={errorMessage('email', 'Email address required')}>
+            <FormField label="Email address" error={errorMessage('email', 'Email address is required')}>
               <input name="email" type="email" placeholder="Email" autoComplete="email" disabled={isLoading} value={email} onChange={(e) => setEmail(e.target.value)} onBlur={setTouched} />
             </FormField>
             <FormField label="Password" error={errorMessage('password', 'Password is required')}>

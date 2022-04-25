@@ -25,15 +25,6 @@ const SignUpPage = ({}) => {
 
   let from = location.state?.from?.pathname || "/";
 
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-
-    signUp({ email, fullname, pwd }, () => {
-      navigate(from, { replace: true });
-    });
-  }, [email]);
-
-
   const rules = {
     fullname: isMinLength(fullname),
     email: isValidEmail(email),
@@ -43,6 +34,17 @@ const SignUpPage = ({}) => {
   const [ touched, setTouched ] = useTouched();
   const { isValid, errorMessage } = useValidation(rules, touched);
 
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+
+    if (!isValid) {
+      return;
+    }
+
+    signUp({ email, fullname, pwd }, () => {
+      navigate(from, { replace: true });
+    });
+  }, [email]);
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState, useEffect, useCallback } from "react";
+import React, { useContext, createContext, useState, useEffect, useCallback, useMemo } from "react";
 import PropTypes from 'prop-types';
 
 export const VideosContext = createContext();
@@ -91,7 +91,7 @@ const valueExist = (value) => value !== undefined;
 
 export const VideosProvider = ({ children }) => {
 
-  const initialState = {
+  const initialState = useMemo(() => ({
     alignment: 'left',
     background: {},
     script: '',
@@ -99,7 +99,7 @@ export const VideosProvider = ({ children }) => {
     actor: ACTORS[0],
     title: 'Choose a name',
     tags: []
-  };
+  }), []);
 
   const [newVideo, setNewVideo] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
@@ -115,7 +115,7 @@ export const VideosProvider = ({ children }) => {
       ...prevState,
       [prop]: value
     }));
-  }, [newVideo]);
+  }, []);
 
   const selectActor = useCallback((actorId) => {
     setNewVideo({
@@ -157,7 +157,7 @@ export const VideosProvider = ({ children }) => {
       setIsLoading(false);
       callback && callback();
     });
-  }, [newVideo]);
+  }, [initialState, newVideo]);
 
   const isValid = valueExist(newVideo.actor) && valueExist(newVideo.voice) && valueExist(newVideo.alignment);
 

@@ -24,7 +24,7 @@ const VoicePreview = ({ voice, isSelected, playingId, onVoiceSelect, onPlayStart
   const handleOnPlay = useCallback((e) => {
     e.stopPropagation();
     onPlayStart && onPlayStart(playingId === id ? null : id);
-  }, [id, isPlaying, onPlayStart]);
+  }, [id, playingId, onPlayStart]);
 
   return (
     <div className={cs} onClick={handleOnVoiceSelect}>

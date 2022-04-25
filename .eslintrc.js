@@ -12,7 +12,8 @@ module.exports = {
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "react-hooks"
   ],
   "rules": {
     'arrow-parens': 2,
@@ -41,6 +42,8 @@ module.exports = {
     'object-curly-spacing': [2, 'always'],
     semi: [2, 'always'],
     'semi-spacing': 2,
-    'space-before-blocks': 2
+    'space-before-blocks': 2,
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": "warn"
   }
 };

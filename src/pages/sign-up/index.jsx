@@ -43,7 +43,7 @@ const SignUpPage = ({}) => {
     signUp({ email, fullname, pwd }, () => {
       navigate(from, { replace: true });
     });
-  }, [isValid, email]);
+  }, [isValid, email, fullname, pwd]);
 
   return (
     <div>

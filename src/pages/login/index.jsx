@@ -42,7 +42,7 @@ const LoginPage = () => {
       navigate(from, { replace: true });
     });
 
-  }, [email, isValid, signIn]);
+  }, [email, pwd, isValid, signIn]);
 
   return (
     <div>

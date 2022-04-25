@@ -25,15 +25,6 @@ const SignUpPage = ({}) => {
 
   let from = location.state?.from?.pathname || "/";
 
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-
-    signUp({ email, fullname, pwd }, () => {
-      navigate(from, { replace: true });
-    });
-  }, [email]);
-
-
   const rules = {
     fullname: isMinLength(fullname),
     email: isValidEmail(email),
@@ -41,8 +32,18 @@ const SignUpPage = ({}) => {
   };
 
   const [ touched, setTouched ] = useTouched();
-  const { isValid, hasError } = useValidation(rules, touched);
+  const { isValid, errorMessage } = useValidation(rules, touched);
 
+  const handleSubmit = useCallback(() => {
+
+    if (!isValid) {
+      return;
+    }
+
+    signUp({ email, fullname, pwd }, () => {
+      navigate(from, { replace: true });
+    });
+  }, [isValid, email]);
 
   return (
     <div>
@@ -50,16 +51,16 @@ const SignUpPage = ({}) => {
       <Centerer>
         <Loading isLoading={isLoading}>
           <Form centered={true} onSubmit={handleSubmit}>
-            <FormField label="Full Name" error={hasError('fullname')}>
+            <FormField label="Full Name" error={errorMessage('fullname', 'Full Name is required')}>
               <input name="fullname" placeholder="Full Name" type="text" value={fullname} onChange={(e) => setFullname(e.target.value)} onBlur={setTouched} />
             </FormField>
-            <FormField label="Email address" error={hasError('email')}>
-              <input name="email" placeholder="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} onBlur={setTouched} />
+            <FormField label="Email address" error={errorMessage('email', 'Email address is required')}>
+              <input name="email" placeholder="Email" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} onBlur={setTouched} />
             </FormField>
-            <FormField label="Password" error={hasError('password')}>
-              <input name="password" placeholder="Enter Password" type="password" value={pwd} onChange={(e) => setPwd(e.target.value)} onBlur={setTouched} />
+            <FormField label="Password" error={errorMessage('password', 'Password is required')}>
+              <input name="password" placeholder="Enter Password" autoComplete="new-password" type="password" value={pwd} onChange={(e) => setPwd(e.target.value)} onBlur={setTouched} />
             </FormField>
-            <Button type="submit" variant="primary" disabled={isLoading || !isValid}>Sign Up</Button>
+            <Button type="submit" variant="primary" disabled={isLoading}>Sign Up</Button>
           </Form>
           <AuthFooter text='Already User?' link='/login' cta='Login'/>
         </Loading>

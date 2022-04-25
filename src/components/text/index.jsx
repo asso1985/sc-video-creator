@@ -19,7 +19,7 @@ const Text = ({ as: Component, children, variant, size, bold, className, ...rest
 Text.propTypes = {
   as: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'strong', 'b', 'i', 'sub', 'sup', 'time']),
   size: PropTypes.oneOf(['sm', 'body', 'md', 'lg']),
-  variant: PropTypes.oneOf(['dark', 'blue', 'gray', 'light']),
+  variant: PropTypes.oneOf(['dark', 'blue', 'gray', 'light', 'danger']),
   bold: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.node

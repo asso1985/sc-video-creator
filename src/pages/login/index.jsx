@@ -24,21 +24,25 @@ const LoginPage = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  const handleSubmit = useCallback(() => {
-
-    signIn({ email, pwd }, () => {
-      navigate(from, { replace: true });
-    });
-
-  }, [email, signIn]);
-
   const rules = {
     email: isValidEmail(email),
     password: isValidPassword(pwd)
   };
 
   const [ touched, setTouched ] = useTouched();
-  const { isValid, hasError } = useValidation(rules, touched);
+  const { isValid, errorMessage } = useValidation(rules, touched);
+
+  const handleSubmit = useCallback(() => {
+
+    if (!isValid) {
+      return;
+    }
+
+    signIn({ email, pwd }, () => {
+      navigate(from, { replace: true });
+    });
+
+  }, [email, isValid, signIn]);
 
   return (
     <div>
@@ -46,13 +50,21 @@ const LoginPage = () => {
       <Centerer>
         <Loading isLoading={isLoading}>
           <Form centered={true} onSubmit={handleSubmit}>
-            <FormField label="Email address" error={hasError('email')}>
-              <input name="email" type="email" placeholder="Email" disabled={isLoading} value={email} onChange={(e) => setEmail(e.target.value)} onBlur={setTouched} />
+            <FormField label="Email address" error={errorMessage('email', 'Email address is required')}>
+              <input name="email" type="email" placeholder="Email" autoComplete="email" disabled={isLoading} value={email} onChange={(e) => setEmail(e.target.value)} onBlur={setTouched} />
             </FormField>
-            <FormField label="Password" error={hasError('password')}>
-              <input name="password" placeholder="Enter Password" type="password" disabled={isLoading} value={pwd} onChange={(e) => setPwd(e.target.value)} onBlur={setTouched} />
+            <FormField label="Password" error={errorMessage('password', 'Password is required')}>
+              <input
+                name="password"
+                placeholder="Enter Password"
+                type="password"
+                autoComplete="current-password"
+                disabled={isLoading}
+                value={pwd}
+                onChange={(e) => setPwd(e.target.value)}
+                onBlur={setTouched} />
             </FormField>
-            <Button type="submit" variant="primary" disabled={isLoading || !isValid}>Login</Button>
+            <Button type="submit" variant="primary" disabled={isLoading}>Login</Button>
           </Form>
           <AuthFooter text='New here?' link='/sign-up' cta='Sign Up'/>
         </Loading>

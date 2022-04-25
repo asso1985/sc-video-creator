@@ -11,13 +11,14 @@ describe('Login', () => {
     });
   };
 
-  const testDisabledLogin = () => {
+  const testErrorLogin = () => {
 
-    it('Login button should be disabled', () => {
+    it('Errors should be visible when trying to login with wrong credentials', () => {
       cy.visit('http://localhost:7000/');
       cy.findByPlaceholderText('Email').type('not_valid_email@gmail.').blur();
+      cy.contains('Email address is required');
       cy.findByPlaceholderText('Enter Password').focus().blur();
-      cy.contains('Login').should('be.disabled');
+      cy.contains('Password is required');
     });
   };
 
@@ -37,7 +38,7 @@ describe('Login', () => {
 
     testLogin();
     testLogout();
-    testDisabledLogin();
+    testErrorLogin();
   });
 
   context('Desktop', () => {
@@ -47,6 +48,6 @@ describe('Login', () => {
 
     testLogin();
     testLogout();
-    testDisabledLogin();
+    testErrorLogin();
   });
 });

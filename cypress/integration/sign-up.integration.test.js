@@ -5,24 +5,22 @@ describe('Sign Up', () => {
       cy.visit('http://localhost:7000/');
       cy.findByText('Sign Up').click();
       cy.location('pathname').should('eq', '/sign-up');
-      cy.findByPlaceholderText('Full Name').type('John Doe');
-      cy.findByPlaceholderText('Email').type('email@gmail.com');
-      cy.findByPlaceholderText('Enter Password').type('password');
+      cy.findByPlaceholderText('Full Name').type('John Doe').blur();
+      cy.findByPlaceholderText('Email').type('email@gmail.com').blur();
+      cy.findByPlaceholderText('Enter Password').type('password').blur();
       cy.get('button[type=submit]').click();
       cy.location('pathname').should('eq', '/create-video');
     });
   };
 
-  const testDisabledSignUp = () => {
+  const testErrorsSignUp = () => {
 
-    it('Sign up button should be disabled if no valid email is given', () => {
+    it('Errors should be visible when filling invalid infos', () => {
       cy.visit('http://localhost:7000/sign-up');
 
       cy.findByPlaceholderText('Full Name').type('John Doe');
       cy.findByPlaceholderText('Email').type('not_valid_email@gmail.').blur();
-      cy.findByPlaceholderText('Enter Password').type('password');
-
-      cy.get('button[type=submit]').should('be.disabled');
+      cy.contains('Email address is required');
     });
   };
 
@@ -32,7 +30,7 @@ describe('Sign Up', () => {
     });
 
     testSignUp();
-    testDisabledSignUp();
+    testErrorsSignUp();
   });
 
   context('Desktop', () => {
@@ -41,7 +39,7 @@ describe('Sign Up', () => {
     });
 
     testSignUp();
-    testDisabledSignUp();
+    testErrorsSignUp();
   });
 });
 
